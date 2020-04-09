@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(indexName = "school", type = "student", shards = 1, replicas = 0)
+@Document(indexName = "school", type = "student", shards = 2, replicas = 0)
 @Accessors(chain = true)
 public class Student implements Serializable {
 
