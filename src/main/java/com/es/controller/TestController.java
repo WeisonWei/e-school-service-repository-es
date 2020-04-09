@@ -8,7 +8,6 @@ import org.springframework.data.elasticsearch.core.query.IndexQueryBuilder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/")
 public class TestController {
 
     private ElasticsearchOperations elasticsearchOperations;
@@ -35,3 +34,4 @@ public class TestController {
         return student;
     }
 }
+

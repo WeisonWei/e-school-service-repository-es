@@ -25,7 +25,7 @@
         <docker.image.prefix>${docker.image.version}</docker.image.prefix>
         <docker.image.version>${project.version}</docker.image.version>
         <elasticsearch.version>7.6.2</elasticsearch.version>
-        <spring.data.elasticsearch.version>3.1.0.RELEASE</spring.data.elasticsearch.version>
+        <spring.data.elasticsearch.version>3.2.6.RELEASE</spring.data.elasticsearch.version>
         <!--<docker.image.prefix>localhost:5000</docker.image.prefix>-->
     </properties>
 
@@ -55,13 +55,13 @@
         <profile>
             <id>spring-data-next-releasetrain</id>
             <properties>
-                <elasticsearch.version>7.6.2</elasticsearch.version>
+                <elasticsearch.version>6.8.2</elasticsearch.version>
             </properties>
         </profile>
         <profile>
             <id>spring-data-next-releasetrain-released</id>
             <properties>
-                <elasticsearch.version>7.6.2</elasticsearch.version>
+                <elasticsearch.version>6.8.2</elasticsearch.version>
             </properties>
         </profile>
     </profiles>
@@ -109,15 +109,28 @@
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-elasticsearch</artifactId>
+            <version>3.2.6.RELEASE</version>
+        </dependency>
+        <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
             <version>7.6.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>7.6.2</version>
+        </dependency>
+
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>elasticsearch-rest-client</artifactId>
             <version>7.6.2</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

@@ -24,7 +24,8 @@ $ ./bin/elasticsearch
 内部使用端口：9300
 
 Elastic会在默认的9200端口运行，请求该端口，会得到说明信息：
-> http://localhost:9200/
+> http://localhost:9200/ 说明信息
+> http://localhost:9200/_cluster/state 节点状态信息
 ```json
 {
   "name" : "Weison.local",
@@ -43,14 +44,20 @@ Elastic会在默认的9200端口运行，请求该端口，会得到说明信息
   },
   "tagline" : "You Know, for Search"
 }
-
-
-
-
-
-
-
 ```
+
+### 3.2 Head插件安装
+> https://github.com/mobz/elasticsearch-head
+
+```jql
+使用内置服务器运行
+git clone git://github.com/mobz/elasticsearch-head.git
+cd elasticsearch-head
+npm install
+npm run start
+open http：// localhost：9100 /
+```
+
 ## 4 增删改查
 
 > [POST] localhost:9200/conference/event

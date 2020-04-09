@@ -26,7 +26,8 @@ public class HighLevelRestClientConfig extends AbstractElasticsearchConfiguratio
 }
 
 
-   /* @Autowired
+
+/* @Autowired
     RestHighLevelClient highLevelClient;
 
     RestClient lowLevelClient = highLevelClient.lowLevelClient();
@@ -37,5 +38,7 @@ public class HighLevelRestClientConfig extends AbstractElasticsearchConfiguratio
             .source(singletonMap("feature", "high-level-rest-client"))
             .setRefreshPolicy(IMMEDIATE);
 
-    IndexResponse response = highLevelClient.index(request);*/
+    IndexResponse response = highLevelClient.index(request);*//*
 
+
+ */

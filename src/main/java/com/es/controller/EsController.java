@@ -31,7 +31,7 @@ public class EsController {
         return student1;
     }
 
-    @PutMapping("/students")
+    @DeleteMapping("/students")
     public Integer deleteStudent(@PathVariable Long studentId) {
         Integer num = studentService.deleteStudent(studentId);
         return num;

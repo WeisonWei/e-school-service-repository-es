@@ -19,7 +19,7 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     StudentEsRepository studentEsRepository;
 
-    @Value("${spring.date.elasticsearch.cluster-node}")
+    @Value("${spring.rest.elasticsearch.uri}")
     String esUrl;
 
 
