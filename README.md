@@ -17,6 +17,7 @@ Elasticsearch提供丰富且灵活的查询语言叫做DSL查询(Query DSL),它�
 DSL(Domain Specific Language特定领域语言)以JSON请求体的形式出现。
 
 ## 3 启动运行
+### 3.1
 ```bash
 $ ./bin/elasticsearch
 ```
@@ -26,27 +27,9 @@ $ ./bin/elasticsearch
 Elastic会在默认的9200端口运行，请求该端口，会得到说明信息：
 > http://localhost:9200/ 说明信息
 > http://localhost:9200/_cluster/state 节点状态信息
-```json
-{
-  "name" : "Weison.local",
-  "cluster_name" : "elasticsearch",
-  "cluster_uuid" : "hdUpXDWIQ5W9V5gpbzYgEw",
-  "version" : {
-    "number" : "7.6.2",
-    "build_flavor" : "default",
-    "build_type" : "tar",
-    "build_hash" : "ef48eb35cf30adf4db14086e8aabd07ef6fb113f",
-    "build_date" : "2020-03-26T06:34:37.794943Z",
-    "build_snapshot" : false,
-    "lucene_version" : "8.4.0",
-    "minimum_wire_compatibility_version" : "6.8.0",
-    "minimum_index_compatibility_version" : "6.0.0-beta1"
-  },
-  "tagline" : "You Know, for Search"
-}
-```
 
-### 3.2 Head插件安装
+### 3.2 可视化插件安装
+#### 3.2.1 Head插件安装
 > https://github.com/mobz/elasticsearch-head
 
 ```jql
@@ -57,6 +40,11 @@ npm install
 npm run start
 open http：// localhost：9100 /
 ```
+
+#### 3.2.2 Kibana Dev Tools - console
+1. 下载 
+2. 运行 ./kibana-7.5.1-darwin-x86_64/bin/kibana*
+3. 在Dev Tools - console执行查询
 
 ## 4 增删改查
 
@@ -86,29 +74,17 @@ open http：// localhost：9100 /
 ```
 
 > [DELETE] localhost:9200/conference/event/zOMeO3EBhhCSVQ9Aj3q4 
-
 > [GET] localhost:9200/conference/event/zOMeO3EBhhCSVQ9Aj3q4
 > [GET] localhost:9200/conference/event/_search?pretty
 > [GET] localhost:9200/conference/event/_search?pretty
-```json
-{
-    "query" : {
-        "match" : {
-            "host" : "Dave"
-        },
-        "match_phrase": {
-            "description" : "use Elasticsearch"
-        }
-    }
-}
-```
+
 ## 5 局部更新
 > 需要doc包裹一下
 [POST]localhost:9200/school/student/13/_update
 ```java
 {"doc":
      {
-        "name": "昌平"
+        "name": "袁文华"
      }
 }
 ```
@@ -116,7 +92,8 @@ open http：// localhost：9100 /
 ### 6.1 全量查询
 [GET]localhost:9200/school/student/_search?pretty
 ### 6.2 简单查询
-[GET]localhost:9200/school/student/_search?q=name:昌平
+[GET]localhost:9200/school/student/_search?q=name:袁文华
+
 ### 6.3 DSL(Domain Specific Language)特定领域语言
 #### 6.3.1 简单查询
 [POST]localhost:9200/school/student/_search
@@ -124,8 +101,8 @@ open http：// localhost：9100 /
 {
 	"query":{
 		"match":{
-			"name":"昌平",
-			"age":"昌平"
+			"name":"袁文华",
+			"age":"1"
 		}
 	}
 }
@@ -208,45 +185,7 @@ open http：// localhost：9100 /
     "ids":["11","12"]
 }
 ```
-返回
-```java
-{
-    "docs": [
-        {
-            "_index": "school",
-            "_type": "student",
-            "_id": "11",
-            "_version": 3,
-            "_seq_no": 12,
-            "_primary_term": 5,
-            "found": true,
-            "_source": {
-                "id": 11,
-                "name": "Terence",
-                "age": 5,
-                "addressId": 3,
-                "version": 3
-            }
-        },
-        {
-            "_index": "school",
-            "_type": "student",
-            "_id": "12",
-            "_version": 3,
-            "_seq_no": 8,
-            "_primary_term": 5,
-            "found": true,
-            "_source": {
-                "id": 12,
-                "name": "Wade",
-                "age": 6,
-                "addressId": 2,
-                "version": 2
-            }
-        }
-    ]
-}
-```
+
 
 ### 7.2 批量插入
 [POST]localhost:9200/school/student/_bulk
@@ -279,7 +218,9 @@ es会自动映射字段类型，但有时候因为分词的需要，需要明确
 
 ### 8.1 新建index
 [PUT]localhost:9200/school/user
-7.X不再支持声明索引类型
+
+`7.x 不再支持声明索引类型`
+
 ```json
 {
   "settings": {
@@ -306,11 +247,8 @@ es会自动映射字段类型，但有时候因为分词的需要，需要明确
 ```
 查询索引库映射：
 [GET]localhost:9200/school/_mapping
-
 新增数据：
-
 [GET]localhost:9200/school/student/_search
-
 [GET] http://localhost:9200/_cat/indices?v 查询index
 
 ## 9 结构化查询

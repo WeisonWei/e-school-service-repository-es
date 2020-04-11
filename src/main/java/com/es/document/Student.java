@@ -14,7 +14,9 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(indexName = "school", type = "student", shards = 2, replicas = 0)
+//type属性将被删除
+//@Document(indexName = "school", type = "_doc", shards = 2, replicas = 0)
+@Document(indexName = "school", shards = 2, replicas = 0)
 @Accessors(chain = true)
 public class Student implements Serializable {
 
